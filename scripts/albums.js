@@ -6,7 +6,7 @@ const albums = [
     title: 'Lofi Loop',
     artist: 'Leinad Odreiuqzi',
     year: '2025',
-    image: 'assets/Cavendish.png',
+    image: 'assets/cavendish.png',
     audio: 'assets/Lofiloop.mp3',
     description: 'Este beat fue creado con inspiración lo-fi, tiene 82 BPM y un bajo profundo.'
   },
@@ -15,7 +15,7 @@ const albums = [
     title: 'Jogo',
     artist: 'Leinad Odreiuqzi',
     year: '2025',
-    image: 'assets/Cavendish.png',
+    image: 'assets/cavendish.png',
     audio: 'assets/Jogo-No-terminado.mp3',
     description: 'Este beat fue creado con inspiración lo-fi, tiene 82 BPM y un bajo profundo.'
   },
@@ -24,8 +24,8 @@ const albums = [
     title: 'Ending',
     artist: 'Leinad Odreiuqzi',
     year: '2025',
-    image: 'assets/Cavendish.png',
-    audio: 'assets/Ending.mp3',
+    image: 'assets/cavendish.png',
+    audio: 'assets/ending.mp3',
     description: 'Este beat fue creado con inspiración lo-fi, tiene 82 BPM y un bajo profundo.'
   },
   {
@@ -33,8 +33,8 @@ const albums = [
     title: 'Mainhouse',
     artist: 'Leinad Odreiuqzi',
     year: '2025',
-    image: 'assets/Cavendish.png',
-    audio: 'assets/Mainhouse.mp3',
+    image: 'assets/cavendish.png',
+    audio: 'assets/MainHouse.mp3',
     description: 'Este beat fue creado con inspiración lo-fi, tiene 82 BPM y un bajo profundo.'
   },
   {
@@ -42,8 +42,8 @@ const albums = [
     title: 'Cumbion No Terminado',
     artist: 'Leinad Odreiuqzi',
     year: '2025',
-    image: 'assets/Cavendish.png',
-    audio: 'assets/Cumbion-No-Terminado.mp3',
+    image: 'assets/cavendish.png',
+    audio: 'assets/Cumbion-No-terminado.mp3',
     description: 'Este beat fue creado con inspiración lo-fi, tiene 82 BPM y un bajo profundo.'
   },
   {
@@ -52,7 +52,7 @@ const albums = [
     artist: 'Leinad Odreiuqzi',
     year: '2024',
     image: 'assets/drophouse.png',
-    audio: 'assets/Drophouse.mp3',
+    audio: 'assets/DropHouse.mp3',
     description: 'Este beat fue creado con inspiración lo-fi, tiene 82 BPM y un bajo profundo.'
   },
   {
@@ -61,7 +61,7 @@ const albums = [
     artist: 'Leinad Odreiuqzi',
     year: '2024',
     image: 'assets/drophouse.png',
-    audio: 'assets/Finalwave.mp3',
+    audio: 'assets/FinalWave.mp3',
     description: 'Este beat fue creado con inspiración lo-fi, tiene 82 BPM y un bajo profundo.'
   },
   {
@@ -97,7 +97,7 @@ const albums = [
     artist: 'Leinad Odreiuqzi',
     year: '2024',
     image: 'assets/drophouse.png',
-    audio: 'assets/SinTitulo.mp3',
+    audio: 'assets/Sintitulo.mp3',
     description: 'Este beat fue creado con inspiración lo-fi, tiene 82 BPM y un bajo profundo.'
   },
   {
