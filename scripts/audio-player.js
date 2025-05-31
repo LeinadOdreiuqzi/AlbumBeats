@@ -152,10 +152,3 @@ export function initAudioPlayer(player) {
         }
     };
 }
-
-// Inicializar todos los reproductores al cargar la página
-document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.custom-audio-player').forEach(player => {
-        initAudioPlayer(player);
-    });
-});

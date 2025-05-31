@@ -50,7 +50,7 @@ const albums = [
     id: 'drophouse',
     title: 'Drophouse',
     artist: 'Leinad Odreiuqzi',
-    year: '2025',
+    year: '2024',
     image: 'assets/drophouse.png',
     audio: 'assets/Drophouse.mp3',
     description: 'Este beat fue creado con inspiración lo-fi, tiene 82 BPM y un bajo profundo.'
@@ -59,7 +59,7 @@ const albums = [
     id: 'finalwave',
     title: 'Final wave',
     artist: 'Leinad Odreiuqzi',
-    year: '2025',
+    year: '2024',
     image: 'assets/drophouse.png',
     audio: 'assets/Finalwave.mp3',
     description: 'Este beat fue creado con inspiración lo-fi, tiene 82 BPM y un bajo profundo.'
@@ -68,7 +68,7 @@ const albums = [
     id: 'hopconhip',
     title: 'Hop con Hip',
     artist: 'Leinad Odreiuqzi',
-    year: '2025',
+    year: '2024',
     image: 'assets/drophouse.png',
     audio: 'assets/HopConHip.mp3',
     description: 'Este beat fue creado con inspiración lo-fi, tiene 82 BPM y un bajo profundo.'
@@ -77,7 +77,7 @@ const albums = [
     id: 'me_tal',
     title: 'ME__TAL__',
     artist: 'Leinad Odreiuqzi',
-    year: '2025',
+    year: '2024',
     image: 'assets/drophouse.png',
     audio: 'assets/ME__TAL__.mp3',
     description: 'Este beat fue creado con inspiración lo-fi, tiene 82 BPM y un bajo profundo.'
@@ -86,7 +86,7 @@ const albums = [
     id: 'coordenadabeatloop',
     title: 'Coordenada beat loop',
     artist: 'Leinad Odreiuqzi',
-    year: '2025',
+    year: '2024',
     image: 'assets/drophouse.png',
     audio: 'assets/CoordenadaBeatLoop.mp3',
     description: 'Este beat fue creado con inspiración lo-fi, tiene 82 BPM y un bajo profundo.'
@@ -95,7 +95,7 @@ const albums = [
     id: 'sintitulo',
     title: 'Sin titulo',
     artist: 'Leinad Odreiuqzi',
-    year: '2025',
+    year: '2024',
     image: 'assets/drophouse.png',
     audio: 'assets/SinTitulo.mp3',
     description: 'Este beat fue creado con inspiración lo-fi, tiene 82 BPM y un bajo profundo.'
@@ -104,7 +104,7 @@ const albums = [
     id: '50',
     title: '50',
     artist: 'Leinad Odreiuqzi',
-    year: '2025',
+    year: '2023',
     image: 'assets/drophouse.png',
     audio: 'assets/50.mp3',
     description: 'Este beat fue creado con inspiración lo-fi, tiene 82 BPM y un bajo profundo.'
@@ -122,7 +122,7 @@ const albums = [
     id: 'intro',
     title: 'Intro',
     artist: 'Leinad Odreiuqzi',
-    year: '2025',
+    year: '2020',
     image: 'assets/LaniakeaPortada.png',
     audio: 'assets/Intro.mp3',
     description: 'Este beat fue creado con inspiración lo-fi, tiene 82 BPM y un bajo profundo.'
@@ -131,7 +131,7 @@ const albums = [
     id: 'outro',
     title: 'Outro',
     artist: 'Leinad Odreiuqzi',
-    year: '2025',
+    year: '2020',
     image: 'assets/LaniakeaPortada.png',
     audio: 'assets/Outro.mp3',
     description: 'Este beat fue creado con inspiración lo-fi, tiene 82 BPM y un bajo profundo.'
@@ -140,7 +140,7 @@ const albums = [
     id: 'hiphopeast',
     title: 'Hip Hop east',
     artist: 'Leinad Odreiuqzi',
-    year: '2025',
+    year: '2020',
     image: 'assets/LaniakeaPortada.png',
     audio: 'assets/HipHopEAst.mp3',
     description: 'Este beat fue creado con inspiración lo-fi, tiene 82 BPM y un bajo profundo.'
@@ -149,7 +149,7 @@ const albums = [
     id: 'hiphopbasic',
     title: 'Hip Hop Basic',
     artist: 'Leinad Odreiuqzi',
-    year: '2025',
+    year: '2020',
     image: 'assets/LaniakeaPortada.png',
     audio: 'assets/BeatBasic.mp3',
     description: 'Este beat fue creado con inspiración lo-fi, tiene 82 BPM y un bajo profundo.'
@@ -267,5 +267,12 @@ function setupToggleButtons() {
 
 // Inicializar cuando el DOM esté completamente cargado
 document.addEventListener('DOMContentLoaded', () => {
+  // Inicializar el reproductor del mejor beat
+  const bestBeatPlayer = document.querySelector('.best-beat-container .custom-audio-player');
+  if (bestBeatPlayer) {
+    initAudioPlayer(bestBeatPlayer);
+  }
+  
+  // Renderizar e inicializar los álbumes
   renderAlbums();
 });
