@@ -43,7 +43,7 @@ const albums = [
     artist: 'Leinad Odreiuqzi',
     year: '2025',
     image: 'assets/cavendish.png',
-    audio: 'assets/Cumbion-No-terminado.mp3',
+    audio: 'assets/cumbion-No-terminado.mp3',
     description: 'Este beat fue creado con inspiración lo-fi, tiene 82 BPM y un bajo profundo.'
   },
   {
