@@ -1,0 +1,634 @@
+@import url("https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap");
+
+* {
+  font-family: "Afacad Flux", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background-color: #000;
+  overflow-x: hidden;
+  position: relative;
+}
+
+#particle-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0.7;
+}
+
+main {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
+  margin: 20px;
+  padding: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  transition: opacity 0.5s ease-out;
+  z-index: 1;
+  pointer-events: none;
+  /* Permite hacer clic a través del header cuando se desvanece */
+}
+
+.hero-section {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  color: white;
+  font-size: 2rem;
+  pointer-events: auto;
+  /* Restaura la interactividad para el contenido del hero */
+  transition: opacity 0.3s ease-out;
+  /* Transición suave para la aparición/desaparición */
+}
+
+main {
+  position: relative;
+  z-index: 2;
+  background: transparent;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+main h2 {
+  color: white;
+}
+
+.intro {
+  text-align: center;
+  margin-bottom: 40px;
+  padding-top: 20px;
+}
+
+.intro .titulo {
+  font-size: 2rem;
+  color: #d2d2d2;
+}
+
+.intro .descripcion {
+  font-size: 1.2rem;
+  color: #a8a8a8;
+}
+
+/* Sección del mejor beat */
+.best-beat {
+  padding: 2rem;
+  color: white;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.best-beat-title {
+  margin-bottom: 2rem;
+  font-size: 2rem;
+}
+
+.best-beat-container {
+  display: flex;
+  gap: 2rem;
+  /*background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;*/
+  padding: 2rem;
+  align-items: center;
+  background: rgba(128, 116, 116, 0.07);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(7.3px);
+  -webkit-backdrop-filter: blur(7.3px);
+  border: 1px solid rgba(128, 116, 116, 0.19);
+}
+
+.beat-image {
+  flex: 1;
+  min-width: 300px;
+}
+
+.beat-image img {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.beat-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.beat-name {
+  text-align: center;
+  font-size: 1.8rem;
+  margin: 0;
+}
+
+.beat-description {
+  text-align: center;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .best-beat-container {
+    flex-direction: column;
+  }
+
+  .beat-image {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+}
+
+/* Sección de álbumes */
+.album-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  /* Reducido de 350px a 280px */
+  gap: 30px;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* Contenedor principal de la tarjeta */
+.album {
+  position: relative;
+  min-height: 450px;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  background: rgba(30, 30, 40, 0.7);
+  border-radius: 10px;
+  overflow: visible;
+  /* Cambiado de 'hidden' a 'visible' para permitir que el contenido expandido sea visible */
+  z-index: 1;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-font-smoothing: subpixel-antialiased;
+  align-items: center;
+  /* Centrar contenido horizontalmente */
+}
+
+.album:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.album img {
+  width: 200px;
+  /* Reducido de 250px a 200px */
+  height: 200px;
+  /* Reducido de 250px a 200px */
+  border-radius: 10px;
+  object-fit: cover;
+  margin-top: 15px;
+  /* Añadir margen superior para separar del borde */
+  display: block;
+  /* Evitar espacio extra debajo de la imagen */
+  margin-left: auto;
+  /* Centrar horizontalmente */
+  margin-right: auto;
+}
+
+.card-header {
+  width: 100%;
+  text-align: center;
+}
+
+.album h3 {
+  padding: 10px;
+  text-align: center;
+  font-size: 18px;
+  color: #fff;
+  margin: 10px 0 5px 0;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.album p {
+  color: rgba(255, 255, 255, 0.9);
+  text-align: center;
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+.card-content {
+  color: #333;
+  /* Color oscuro para el contenido expandido */
+}
+
+.album p {
+  text-align: center;
+  font-size: 14px;
+  /* Reducido ligeramente */
+}
+
+/* Contenedor de la tarjeta */
+
+/* Contenido principal de la tarjeta */
+.album>*:not(.card-content) {
+  position: relative;
+  z-index: 2;
+  /* Mantener el contenido principal por encima del fondo */
+  transition: all 0.4s ease;
+}
+
+/* Fondo de la tarjeta */
+.album::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(30, 30, 40, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 10px;
+  z-index: 1;
+  transition: all 0.4s ease;
+}
+
+/* Contenido expandible - Corregir el posicionamiento y la animación */
+.card-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Transición más suave */
+  background: rgba(20, 20, 30, 0.95);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: rgba(255, 255, 255, 0.9);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 20;
+  /* Aumentado el z-index para asegurar que esté por encima de todo */
+  transform-origin: bottom center;
+  /* Origen de transformación desde el centro inferior */
+  box-sizing: border-box;
+  padding: 0;
+  width: 100%;
+  margin: 0;
+  border-radius: 0 0 10px 10px;
+  opacity: 0;
+  /* Inicialmente invisible */
+  transform: scaleY(0.9);
+  /* Inicialmente escalado hacia abajo ligeramente */
+  pointer-events: none;
+  /* No interactivo cuando está oculto */
+}
+
+/* Contenedor interno del contenido */
+.card-content-inner {
+  width: 100%;
+  padding: 20px 0;
+  box-sizing: border-box;
+  opacity: 0;
+  /* Inicialmente invisible */
+  transition: opacity 0.2s ease;
+  /* Transición separada para el contenido interno */
+}
+
+/* Estado expandido - Mejorar la animación */
+.card-content.expanded {
+  max-height: 500px;
+  opacity: 1;
+  visibility: visible;
+  transform: scaleY(1);
+  /* Escala normal cuando está expandido */
+  overflow: visible;
+  /* Cambiado de 'auto' a 'visible' para eliminar la barra de scroll */
+  padding: 20px;
+  box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.3);
+  pointer-events: auto;
+  /* Interactivo cuando está visible */
+}
+
+/* Hacer visible el contenido interno cuando está expandido */
+.card-content.expanded .card-content-inner {
+  opacity: 1;
+  transition-delay: 0.1s;
+  /* Pequeño retraso para que aparezca después de que comience la expansión */
+}
+
+/* Ajustar el encabezado cuando se expande */
+.album.expanded .card-header {
+  position: relative;
+  z-index: 11;
+  /* Por encima del contenido expandido */
+}
+
+/* Asegurar que el contenido del audio player se ajuste */
+.audio-player {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Asegurar que el contenido del track info para que no desborde */
+.track-info {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+/* Asegurar que el audio player no cause desbordamiento */
+.audio-player,
+.audio-player * {
+  box-sizing: border-box;
+  max-width: 100%;
+}
+
+/* Asegurar que los controles del reproductor se ajusten */
+.player-controls {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  width: 100%;
+  gap: 10px;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  padding: 0 5px;
+}
+
+/* Estilos del reproductor de audio */
+.custom-audio-player {
+  width: 100%;
+  margin-top: 15px;
+}
+
+.player-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.progress-container {
+  flex: 1;
+  min-width: 0;
+}
+
+.volume-slider {
+  width: 60px;
+}
+
+/* Asegurar que los elementos no se desborden */
+.album img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Asegurar que el botón de toggle esté por encima */
+.toggle-btn {
+  position: relative;
+  z-index: 30;
+  /* Aumentado para estar por encima del contenido expandido */
+  margin-top: 10px;
+}
+
+/* Ajustar la barra de progreso */
+.progress-container {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+}
+
+/* Asegurar que el input de volumen no cause desbordamiento */
+.volume-slider {
+  max-width: 80px;
+}
+
+/* Asegurar que el encabezado de la tarjeta esté por encima */
+.card-header {
+  position: relative;
+  z-index: 25;
+  /* Aumentado para estar por encima del contenido expandido pero debajo del botón */
+  background: transparent;
+  padding: 15px;
+  margin: 0;
+  width: 100%;
+  border-radius: 10px 10px 0 0;
+}
+
+/* Imagen de la tarjeta */
+.album img {
+  position: relative;
+  z-index: 2;
+}
+
+/* Botón de toggle */
+.toggle-btn {
+  position: relative;
+  z-index: 4;
+}
+
+/* Asegurar que la tarjeta contenedora tenga posición relativa */
+.album {
+  position: relative;
+  overflow: visible;
+  /* Asegura que el contenido expandido sea visible */
+}
+
+.toggle-btn {
+  padding: 6px 14px;
+  /* Reducido ligeramente */
+  background-color: #a930d5;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s;
+}
+
+.toggle-btn:hover {
+  background-color: #8a20b5;
+}
+
+footer {
+  padding: 20px;
+  margin-top: 40px;
+  min-height: 50px;
+}
+
+footer h2 {
+  color: white;
+}
+
+.scroll-down {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  animation: bounce 2s infinite;
+  cursor: pointer;
+  font-size: 2rem;
+  color: white;
+  opacity: 0.8;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.25em 0.5em;
+  font-size: 0.75rem;
+  color: #fff;
+  background-color: #a930d5;
+  border-radius: 0.5em;
+  margin-left: 0.1em;
+}
+
+/* Estilos para el reproductor personalizado */
+.custom-audio-player {
+  width: 100%;
+  background: rgba(20, 20, 30, 0.8);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 12px 15px;
+  box-sizing: border-box;
+  margin-top: 15px;
+}
+
+.player-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.play-btn,
+.mute-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 50%;
+  color: white;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.play-btn:hover,
+.mute-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+
+.pause-icon,
+.mute-icon {
+  display: none;
+}
+
+.playing .play-icon,
+.muted .volume-icon {
+  display: none;
+}
+
+.playing .pause-icon,
+.muted .mute-icon {
+  display: block;
+}
+
+.progress-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.progress-bar {
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.progress {
+  height: 100%;
+  width: 0%;
+  background: #a930d5;
+  transition: width 0.1s linear;
+}
+
+.time-display {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.7);
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.volume-slider {
+  width: 60px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  outline: none;
+}
+
+.volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+/* Ocultar el reproductor nativo */
+audio {
+  display: none;
+}
+
+/* Optimización para evitar duplicación de código */
+@keyframes bounce {
+
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
+    transform: translateY(0) translateX(-50%);
+  }
+
+  40% {
+    transform: translateY(-20px) translateX(-50%);
+  }
+
+  60% {
+    transform: translateY(-10px) translateX(-50%);
+  }
+}
