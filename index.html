@@ -15,56 +15,33 @@
     <div class="hero-section">
       <h2>Portada</h2>
       <div class="scroll-down">
-        <span>&#x25BC;</span> <!-- Unicode para flecha hacia abajo ▼ -->
+        <span>&#x25BC;</span>
       </div>
     </div>
   </header>
   <main>
-    <!-- Sección de introducción -->
     <section class="intro">
       <h1 class="titulo">Bienvenido a Album Beat's</h1>
       <p class="descripcion">Explora mi colección de beats creados por <span class="badge">Leinad Odreiuqzi</span></p>
     </section>
-    <!--Sección del mejor beat-->
+    
+    <!-- Sección del mejor beat con slider mejorado -->
     <section class="best-beat">
-      <h2 class="best-beat-title">Mejor beat</h2>
-      <div class="best-beat-container">
-        <div class="beat-image">
-          <img src="assets/LaniakeaPortada.png" alt="Laniakea - Portada del álbum">
-        </div>
-        <div class="beat-info">
-          <h3 class="beat-name">Laniakea</h3>
-          <p class="beat-description">Descripción detallada del beat y su proceso creativo...</p>
-          <div class="custom-audio-player">
-            <audio id="audio-player" preload="metadata">
-              <source src="assets/laniakea.mp3" type="audio/mp3">
-              Tu navegador no soporta audio.
-            </audio>
-            <div class="player-controls">
-              <button class="play-btn" aria-label="Reproducir/Pausar">
-                <span class="play-icon">▶</span>
-                <span class="pause-icon">❚❚</span>
-              </button>
-              <div class="progress-container">
-                <div class="progress-bar">
-                  <div class="progress"></div>
-                </div>
-                <div class="time-display">
-                  <span class="current-time">0:00</span> / <span class="duration">0:00</span>
-                </div>
-              </div>
-              <button class="mute-btn" aria-label="Silenciar/Activar sonido">
-                <span class="volume-icon">🔊</span>
-                <span class="mute-icon">🔇</span>
-              </button>
-              <input type="range" class="volume-slider" min="0" max="1" step="0.01" value="1">
-            </div>
+      <h2 class="best-beat-title">Mejores Beats</h2>
+      <div class="slider-container">
+        <button class="slider-arrow prev" aria-label="Anterior">❮</button>
+        <div class="slider-wrapper">
+          <div class="slider-track">
+            <!-- Las tarjetas se insertarán aquí dinámicamente -->
           </div>
         </div>
+        <button class="slider-arrow next" aria-label="Siguiente">❯</button>
       </div>
+      <div class="slider-dots">
+        <!-- Los puntos de navegación se insertarán aquí dinámicamente -->
       </div>
     </section>
-    <!-- Sección de todos los beats -->
+    
     <h2>Todos los beats</h2>
     <section class="album-list">
       <!-- Los álbumes se insertarán aquí dinámicamente -->
