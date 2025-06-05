@@ -275,17 +275,63 @@ function initAudioPlayers() {
   })
 }
 
+// Variables para la paginación
+const ALBUMS_PER_PAGE = 8;
+let currentPage = 1;
+let displayedAlbums = 0;
+
 function renderAlbums() {
-  const albumList = document.querySelector(".album-list")
-  if (!albumList) return
+  const albumList = document.querySelector(".album-list");
+  if (!albumList) return;
 
-  albumList.innerHTML = ""
-  albums.forEach((album) => {
-    albumList.insertAdjacentHTML("beforeend", createAlbumHTML(album))
-  })
+  // Limpiar solo si es la primera página
+  if (currentPage === 1) {
+    albumList.innerHTML = "";
+  }
 
-  initAudioPlayers()
-  setupToggleButtons()
+  // Calcular índices de los álbumes a mostrar
+  const startIndex = (currentPage - 1) * ALBUMS_PER_PAGE;
+  const endIndex = startIndex + ALBUMS_PER_PAGE;
+  const albumsToShow = albums.slice(startIndex, endIndex);
+
+  // Agregar los álbumes de la página actual
+  albumsToShow.forEach((album) => {
+    albumList.insertAdjacentHTML("beforeend", createAlbumHTML(album));
+    displayedAlbums++;
+  });
+
+  // Inicializar reproductores de audio
+  initAudioPlayers();
+  setupToggleButtons();
+
+  // Agregar o actualizar el botón de carga
+  updateLoadMoreButton(albumList);
+}
+
+function updateLoadMoreButton(container) {
+  // Eliminar el botón anterior si existe
+  const existingButton = document.getElementById('load-more-button');
+  if (existingButton) {
+    existingButton.remove();
+  }
+
+  // Verificar si hay más álbumes por mostrar
+  if (displayedAlbums < albums.length) {
+    const loadMoreButton = document.createElement('button');
+    loadMoreButton.id = 'load-more-button';
+    loadMoreButton.className = 'load-more-button';
+    loadMoreButton.textContent = 'Cargar más';
+    loadMoreButton.addEventListener('click', () => {
+      currentPage++;
+      renderAlbums();
+      // Desplazarse suavemente al final de la lista
+      setTimeout(() => {
+        loadMoreButton.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }, 100);
+    });
+    
+    container.insertAdjacentElement('afterend', loadMoreButton);
+  }
 }
 
 function setupToggleButtons() {
