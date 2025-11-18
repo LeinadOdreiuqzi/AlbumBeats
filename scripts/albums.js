@@ -2,12 +2,12 @@ import { initAudioPlayer } from "./audio-player.js"
 
 const albums = [
   {
-    id: "lodiloop",
-    title: "Lofi Loop",
+    id: "Fincacho",
+    title: "Fincacho",
     artist: "Leinad Odreiuqzi",
     year: "2025",
-    image: "assets/cavendish.png",
-    audio: "assets/Lofiloop.mp3",
+    image: "assets/fincacho.png",
+    audio: "assets/Ficancho.mp3",
     description: "Este beat fue creado con inspiración lo-fi, tiene 82 BPM y un bajo profundo.",
   },
   {
@@ -271,7 +271,9 @@ function createAlbumHTML(album) {
 
 function initAudioPlayers() {
   document.querySelectorAll(".custom-audio-player").forEach((player) => {
+    if (player.dataset.initialized === "true") return
     initAudioPlayer(player)
+    player.dataset.initialized = "true"
   })
 }
 
@@ -279,6 +281,7 @@ function initAudioPlayers() {
 const ALBUMS_PER_PAGE = 8;
 let currentPage = 1;
 let displayedAlbums = 0;
+let documentToggleListenerAdded = false;
 
 function renderAlbums() {
   const albumList = document.querySelector(".album-list");
@@ -336,6 +339,8 @@ function updateLoadMoreButton(container) {
 
 function setupToggleButtons() {
   document.querySelectorAll(".toggle-btn").forEach((button) => {
+    if (button.dataset.listenerAdded === "true") return
+
     button.addEventListener("click", (e) => {
       e.stopPropagation()
       const cardContent = button.closest(".album").querySelector(".card-content")
@@ -354,17 +359,22 @@ function setupToggleButtons() {
       cardContent.classList.toggle("expanded")
       button.textContent = cardContent.classList.contains("expanded") ? "Ver menos" : "Ver más"
     })
+
+    button.dataset.listenerAdded = "true"
   })
 
-  document.addEventListener("click", (e) => {
-    if (!e.target.closest(".album")) {
-      document.querySelectorAll(".card-content.expanded").forEach((content) => {
-        content.classList.remove("expanded")
-        const btn = content.closest(".album").querySelector(".toggle-btn")
-        if (btn) btn.textContent = "Ver más"
-      })
-    }
-  })
+  if (!documentToggleListenerAdded) {
+    document.addEventListener("click", (e) => {
+      if (!e.target.closest(".album")) {
+        document.querySelectorAll(".card-content.expanded").forEach((content) => {
+          content.classList.remove("expanded")
+          const btn = content.closest(".album").querySelector(".toggle-btn")
+          if (btn) btn.textContent = "Ver más"
+        })
+      }
+    })
+    documentToggleListenerAdded = true
+  }
 }
 
 // SLIDER NAVEGACIÓN CÍCLICA SUAVE
