@@ -2,6 +2,15 @@ import { initAudioPlayer } from "./audio-player.js"
 
 const albums = [
   {
+    id: "empty-noise",
+    title: "Empty Noise",
+    artist: "Leinad Odreiuqzi",
+    year: "2026",
+    image: "assets/lausGod.jpg",
+    audio: "assets/empty-noise.mp3",
+    description: "Este beat fue creado con inspiración lo-fi, tiene 82 BPM y un bajo profundo.",
+  },
+  {
     id: "Fincacho",
     title: "Fincacho",
     artist: "Leinad Odreiuqzi",
@@ -332,7 +341,7 @@ function updateLoadMoreButton(container) {
         loadMoreButton.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       }, 100);
     });
-    
+
     container.insertAdjacentElement('afterend', loadMoreButton);
   }
 }
