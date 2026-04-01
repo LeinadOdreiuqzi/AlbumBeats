@@ -341,7 +341,7 @@ function updateLoadMoreButton(container) {
         loadMoreButton.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
       }, 100);
     });
-
+    
     container.insertAdjacentElement('afterend', loadMoreButton);
   }
 }
